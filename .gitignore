@@ -1,0 +1,19 @@
+.env
+.env.local
+.venv/
+venv/
+.deps/
+wheels/
+.pipcache/
+.tmp/
+tests/.tmp/
+__pycache__/
+*.py[cod]
+data/
+*.log
+.pytest_cache/
+
+# local real config (contains secrets / QQ numbers); commit config.example.yaml instead
+config.yaml
+config.yaml.bak
+*.bak

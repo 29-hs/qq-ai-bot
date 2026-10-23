@@ -1,0 +1,24 @@
+[Unit]
+Description=QQ AI Bot (OneBot v11 + DeepSeek)
+Documentation=https://github.com/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 改成你实际运行的用户
+User=qqbot
+Group=qqbot
+WorkingDirectory=/opt/qq-ai-bot
+# .env 里的 DEEPSEEK_API_KEY / NAPCAT_TOKEN 会注入成环境变量
+EnvironmentFile=/opt/qq-ai-bot/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/qq-ai-bot/.venv/bin/python run.py -c /opt/qq-ai-bot/config.yaml
+Restart=always
+RestartSec=5
+# 日志同时进 journald
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
